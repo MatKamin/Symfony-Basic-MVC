@@ -25,17 +25,50 @@
     </header>
 
     <section id="main">
-        <h2 class="info">
-            Every two years we have a tournament
-        </h2>
-        <article class="tournament-box">
-            {% for tournament in tournaments %}
-            <a href="tournament/{{ loop.index }}" class="tournament-link">
-                {{ tournament.name }}
+        <article class="rank-box">
+            <h1>
+                <a href="/tournament/1">
+                    {{ tournament.name }}
+                </a> - Round {{ r }}
                 <br>
-                <span>View Results</span>
-            </a>
-            {% endfor %}
+                <br>
+            </h1>
+            <ul class="rank-ul">
+                {% for player in 0..round|length-1 %}
+                <li class="rank">
+                    <aside>
+                        {% if loop.index == 1 %}
+                        <p class="rank-pos first">
+                            {{ loop.index }}.
+                        </p>
+                        {% elseif loop.index == 2 %}
+                        <p class="rank-pos second">
+                            {{ loop.index }}.
+                        </p>
+                        {% elseif loop.index == 3 %}
+                        <p class="rank-pos third">
+                            {{ loop.index }}.
+                        </p>
+                        {% else %}
+                        <p class="rank-pos">
+                            {{ loop.index }}.
+                        </p>
+                        {% endif %}
+                    </aside>
+                    <div class="rank-player">
+                        <p class="rank-name">
+                            <img src="{{ asset('resources/images/')}}{{round[player].pic}}.png">
+                            {{ round[player].name }}
+                        </p>
+                        <div class="rank-info">
+                            <p class="rank-point">
+                                {{ round[player].time }}, {{ round[player].dis }}, {{ round[player].plane }}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </article>
     </section>
 {% endblock %}

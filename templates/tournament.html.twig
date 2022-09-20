@@ -25,17 +25,54 @@
     </header>
 
     <section id="main">
-        <h2 class="info">
-            Every two years we have a tournament
-        </h2>
-        <article class="tournament-box">
-            {% for tournament in tournaments %}
-            <a href="tournament/{{ loop.index }}" class="tournament-link">
-                {{ tournament.name }}
-                <br>
-                <span>View Results</span>
-            </a>
-            {% endfor %}
+        <h1 class="tournament-heading">
+            {{ tournament.name }}
+        </h1>
+
+        {% for round in rounds %}
+        <article class="rank-box">
+            <h1>
+                <a href="/results/{{ tournament.rounds[loop.index-1] }}/{{ tournament.id }}/{{ loop.index }}">
+                    Round {{ loop.index }}
+                </a>
+            </h1>
+            <ul class="rank-ul">
+                {% for player in 0..round|length-1 %}
+                <li class="rank">
+                    <aside>
+                        {% if loop.index == 1 %}
+                        <p class="rank-pos first">
+                            {{ loop.index }}.
+                        </p>
+                        {% elseif loop.index == 2 %}
+                        <p class="rank-pos second">
+                            {{ loop.index }}.
+                        </p>
+                        {% elseif loop.index == 3 %}
+                        <p class="rank-pos third">
+                            {{ loop.index }}.
+                        </p>
+                        {% else %}
+                        <p class="rank-pos">
+                            {{ loop.index }}.
+                        </p>
+                        {% endif %}
+                    </aside>
+                    <div class="rank-player">
+                        <p class="rank-name">
+                            <img src="{{ asset('resources/images/')}}{{round[player].pic}}.png">
+                            {{ round[player].name }}
+                        </p>
+                        <div class="rank-info">
+                            <p class="rank-point">
+                                {{ round[player].time }}, {{ round[player].dis }}, {{ round[player].plane }}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </article>
+        {% endfor %}
     </section>
 {% endblock %}

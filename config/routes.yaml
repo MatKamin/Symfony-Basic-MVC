@@ -6,7 +6,14 @@ kernel:
   resource: ../src/Kernel.php
   type: annotation
 
-blog_list:
+main:
   path: /
-  # the controller value has the format 'controller_class::method_name'
   controller: App\Controller\Controller::main
+
+tournament:
+  path: /tournament/{id}
+  controller: App\Controller\Controller::tournament
+
+round:
+  path: /results/{id}/{tournament}/{round}
+  controller: App\Controller\Controller::results

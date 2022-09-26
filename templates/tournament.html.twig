@@ -27,6 +27,12 @@
     <section id="main">
         <h1 class="tournament-heading">
             {{ tournament.name }}
+            <div class="toggle">
+                <input type="checkbox" id="langToggle">
+                <label for="langToggle">
+                    <span id="foot">🦶</span>
+                </label>
+            </div>
         </h1>
 
         {% for round in rounds %}
@@ -65,7 +71,10 @@
                         </p>
                         <div class="rank-info">
                             <p class="rank-point">
-                                {{ round[player].time }}, {{ round[player].dis }}, {{ round[player].plane }}
+                                {{ round[player].time }},
+                                 <span class="feet none"> {{ round[player].dis|dis }}, </span> 
+                                 <span class="meter"> {{ round[player].dis }}, </span> 
+                                 {{ round[player].plane }}
                             </p>
                         </div>
                     </div>

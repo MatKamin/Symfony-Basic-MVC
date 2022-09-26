@@ -140,9 +140,21 @@ header {
     justify-content: space-around;
 }
 
-.rank-point, .rank-dis {
+
+
+.rank-point, .rank-dis, span{
     font-size: 2rem;
 }
+
+
+span.none {
+    display: none;
+}
+
+
+
+
+
 
 /* ############ ############  MAIN  ############ ############ */
 
@@ -171,6 +183,30 @@ header {
     padding-bottom: 2rem;
     margin-bottom: 4rem;
     border-bottom: solid 3px #dddddd;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle {
+    transform: scale(2);
+}
+
+#langToggle {
+    display: none;
+}
+
+#foot {
+    display: block;
+    opacity: 20%;
+    transform: rotate(0deg);
+}
+
+#foot.selected {
+    opacity: 100%;
+    transform: rotate(720deg);
+    transition: 0.4s;
 }
 
 @media only screen and (max-width: 700px) {

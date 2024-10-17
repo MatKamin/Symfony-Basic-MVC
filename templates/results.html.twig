@@ -62,9 +62,14 @@
                         </p>
                         <div class="rank-info">
                             <p class="rank-point">
-                                {{ round[player].time }}, {{ round[player].dis|dis }}, {{ round[player].plane }}
+                                {{ time(round[player].time) }}, {{ round[player].dis|dis }}, {{ round[player].plane }}
                             </p>
                         </div>
+                        {% if loop.index is win %}
+                        <p class="">
+                            winner
+                        </p>
+                        {% endif %}
                     </div>
                 </li>
                 {% endfor %}

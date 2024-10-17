@@ -14,6 +14,11 @@ class Controller extends AbstractController
         return $this->render('main.html.twig', ['tournaments' => $this->tournaments]);
     }
 
+    public function tournaments()
+    {
+        return $this->render('main.html.twig', ['tournaments' => $this->tournaments]);
+    }
+
     public function tournament($id)
     {
         $rounds = [];

@@ -17,3 +17,7 @@ tournament:
 round:
   path: /results/{id}/{tournament}/{round}
   controller: App\Controller\Controller::results
+
+tournaments:
+  path: /tournaments/
+  controller: App\Controller\Controller::tournaments
